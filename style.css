@@ -1,60 +1,137 @@
-body{
-    margin:0;
-    padding:40px;
-    background:#ffeaf5;
-    font-family:'Poppins',sans-serif;
-    display:flex;
-    justify-content:center;
+body {
+    margin: 0;
+    padding: 30px 20px;
+    background: #ffeaf5;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
 }
 
-.container{
-    width:360px;
+
+.container {
+    width: 360px;
 }
 
-h1{
-    background:linear-gradient(135deg,#ff4fa3,#ff87c5);
-    color:white;
-    text-align:center;
-    padding:20px;
-    border-radius:25px;
-    font-size:42px;
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
-    margin-bottom:10px;
+
+/* LEVEL UP HEADER */
+
+h1 {
+    background: linear-gradient(135deg, #ff4fa3, #ff87c5);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 25px;
+    font-size: 38px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
 }
 
-.subtitle{
-    text-align:center;
-    color:#555;
-    margin-bottom:25px;
+
+/* PROFILE */
+
+.profile-card {
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 8px 18px rgba(0,0,0,.08);
 }
 
-.card{
-    background:white;
-    border-radius:20px;
-    padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 8px 18px rgba(0,0,0,.08);
+
+.avatar {
+    font-size: 55px;
 }
 
-.card h2{
-    margin-top:0;
-    color:#ff4fa3;
+
+.profile-card h2 {
+    margin-bottom: 5px;
+    color: #ff4fa3;
 }
 
-button{
-    width:100%;
-    padding:18px;
-    border:none;
-    border-radius:20px;
-    background:#ff4fa3;
-    color:white;
-    font-size:20px;
-    font-weight:700;
-    cursor:pointer;
-    transition:.2s;
+
+.profile-card p {
+    margin-top: 0;
+    color: #777;
 }
 
-button:hover{
-    transform:scale(1.03);
-    background:#ff2d8d;
+
+.xp-text {
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+
+/* XP BAR */
+
+.xp-bar {
+    height: 18px;
+    background: #ffd1e8;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+
+.xp-fill {
+    height: 100%;
+    width: 25%;
+    background: linear-gradient(90deg, #ff4fa3, #ff87c5);
+    border-radius: 20px;
+}
+
+
+/* STATS */
+
+.stats {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+
+.stat-card {
+    background: white;
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 8px 18px rgba(0,0,0,.08);
+}
+
+
+.stat-card h3 {
+    margin: 5px;
+    color: #ff4fa3;
+}
+
+
+/* GOALS CARD */
+
+.card {
+    background: white;
+    border-radius: 25px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 8px 18px rgba(0,0,0,.08);
+}
+
+
+.card h2 {
+    color: #ff4fa3;
+}
+
+
+/* BUTTON */
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 18px;
+    border: none;
+    border-radius: 20px;
+    background: #ff4fa3;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
 }
