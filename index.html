@@ -19,71 +19,126 @@
 
 <div class="container">
 
-  <h1>🩷 LEVEL UP</h1>
+  <!-- HOME PAGE -->
+
+  <div id="home-page">
+
+    <h1>🩷 LEVEL UP</h1>
 
 
-  <div class="profile-card">
+    <div class="profile-card">
 
-    <div class="avatar">
-      👤
+      <div class="avatar">
+        👤
+      </div>
+
+      <h2>Katherine</h2>
+      <p>Level 1 Athlete</p>
+
+
+      <div class="xp-text">
+        ⭐ 120 / 500 XP
+      </div>
+
+
+      <div class="xp-bar">
+        <div class="xp-fill"></div>
+      </div>
+
     </div>
 
-    <h2>Katherine</h2>
-    <p>Level 1 Athlete</p>
 
-    <div class="xp-text">
-      ⭐ 120 / 500 XP
+
+    <div class="stats">
+
+      <div class="stat-card">
+        🔥
+        <h3>Streak</h3>
+        <p>0 Days</p>
+      </div>
+
+
+      <div class="stat-card">
+        🏆
+        <h3>Badges</h3>
+        <p>0 / 99</p>
+      </div>
+
     </div>
 
-    <div class="xp-bar">
-      <div class="xp-fill"></div>
+
+
+    <div class="card">
+
+      <h2>Today's Goals</h2>
+
+      <p>☐ Complete workout</p>
+      <p>☐ Stretch</p>
+      <p>☐ Practice skills</p>
+      <p>☐ Recovery</p>
+
     </div>
+
+
+
+    <button onclick="openTraining()">
+      Start Training 💪
+    </button>
+
 
   </div>
 
 
 
-  <div class="stats">
+  <!-- TRAINING PAGE -->
 
-    <div class="stat-card">
-      🔥
-      <h3>Streak</h3>
-      <p>0 Days</p>
+  <div id="training-page" class="hidden">
+
+    <h1>💪 TRAINING</h1>
+
+
+    <div class="card">
+
+      <h2>📣 Cheer Strength</h2>
+      <p>Build stunt power and backspot strength.</p>
+
     </div>
 
 
-    <div class="stat-card">
-      🏆
-      <h3>Badges</h3>
-      <p>0 / 99</p>
+    <div class="card">
+
+      <h2>🤸 Jumps & Flexibility</h2>
+      <p>Improve toe touches, hurdlers, and mobility.</p>
+
     </div>
 
+
+    <div class="card">
+
+      <h2>🔥 Core</h2>
+      <p>Build strength and stability.</p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h2>⚡ Conditioning</h2>
+      <p>Increase endurance and stamina.</p>
+
+    </div>
+
+
+    <button onclick="goHome()">
+      ← Back Home
+    </button>
+
+
   </div>
-
-
-
-
-  <div class="card">
-
-    <h2>Today's Goals</h2>
-
-    <p>☐ Complete workout</p>
-    <p>☐ Stretch</p>
-    <p>☐ Practice skills</p>
-    <p>☐ Recovery</p>
-
-  </div>
-
-
-
-  <button onclick="openTraining()">
-    Start Training 💪
-  </button>
 
 
 
 </div>
-
 
 
 <script src="app.js"></script>
