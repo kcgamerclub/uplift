@@ -13,7 +13,14 @@ body {
 }
 
 
-/* LEVEL UP HEADER */
+/* HIDE SCREENS */
+
+.hidden {
+    display: none;
+}
+
+
+/* HEADER */
 
 h1 {
     background: linear-gradient(135deg, #ff4fa3, #ff87c5);
@@ -26,7 +33,7 @@ h1 {
 }
 
 
-/* PROFILE */
+/* PROFILE CARD */
 
 .profile-card {
     background: white;
@@ -55,13 +62,13 @@ h1 {
 }
 
 
+/* XP */
+
 .xp-text {
     font-weight: 600;
     margin-top: 20px;
 }
 
-
-/* XP BAR */
 
 .xp-bar {
     height: 18px;
@@ -105,7 +112,7 @@ h1 {
 }
 
 
-/* GOALS CARD */
+/* GENERAL CARDS */
 
 .card {
     background: white;
