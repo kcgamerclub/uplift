@@ -1,16 +1,16 @@
 function openTraining() {
 
-    document.getElementById("home-page").style.display = "none";
+    document.getElementById("home-page").classList.add("hidden");
 
-    document.getElementById("training-page").style.display = "block";
+    document.getElementById("training-page").classList.remove("hidden");
 
 }
 
 
 function goHome() {
 
-    document.getElementById("training-page").style.display = "none";
+    document.getElementById("training-page").classList.add("hidden");
 
-    document.getElementById("home-page").style.display = "block";
+    document.getElementById("home-page").classList.remove("hidden");
 
 }
