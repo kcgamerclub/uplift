@@ -8,9 +8,13 @@ body {
 }
 
 h1 {
-  color: #ff4fa3;
-  font-size: 45px;
-  margin-bottom: 10px;
+  color: white;
+  background: linear-gradient(90deg, #ff4fa3, #ff80bf);
+  padding: 20px;
+  border-radius: 20px;
+  font-size: 42px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
 p {
