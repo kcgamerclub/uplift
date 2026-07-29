@@ -1,110 +1,101 @@
+let xp = Number(localStorage.getItem("xp")) || 0;
+
+let completedWorkouts = JSON.parse(
+    localStorage.getItem("completedWorkouts")
+) || [];
+
+
+
 const today = new Date().getDay();
+
 
 
 const workouts = {
 
 0: {
 day: "Sunday",
-
 morning: [
 "Lilly Sabri Abs",
 "Deep Core Activation",
 "Jumps & Flexibility"
 ],
-
 night: [
 "Lilly Sabri Glutes",
 "Full Backspot Strength"
 ]
-
 },
 
 
 1: {
 day: "Monday",
-
 morning: [
 "Lilly Sabri Abs",
 "Deep Core Activation",
 "Jumps & Flexibility"
 ],
-
 night: [
 "Lilly Sabri Glutes",
 "Lower Body Workout",
 "Upper Body Workout"
 ]
-
 },
 
 
 2: {
 day: "Tuesday",
-
 morning: [
 "Lilly Sabri Abs",
 "Deep Core Activation",
 "Jumps & Flexibility"
 ],
-
 night: [
 "Lilly Sabri Glutes",
 "Full Backspot Strength"
 ]
-
 },
 
 
 3: {
 day: "Wednesday",
-
 morning: [
 "Lilly Sabri Abs",
 "Deep Core Activation",
 "Jumps & Flexibility"
 ],
-
 night: [
 "Lilly Sabri Glutes",
 "Lower Body Workout",
 "Strength Workout"
 ]
-
 },
 
 
 4: {
 day: "Thursday",
-
 morning: [
 "Lilly Sabri Abs",
 "Deep Core Activation",
 "Jumps & Flexibility"
 ],
-
 night: [
 "Lilly Sabri Glutes",
 "Full Backspot Strength"
 ]
-
 },
 
 
 5: {
 day: "Friday",
-
 morning: [
 "Lilly Sabri Abs",
 "Deep Core Activation",
 "Jumps & Flexibility"
 ],
-
 night: [
 "Lilly Sabri Glutes",
 "Upper Body Workout",
 "Strength Workout"
 ]
-
 }
 
 };
@@ -121,25 +112,29 @@ document.getElementById("day-title").innerHTML =
 
 
 
-// CREATE CLICKABLE WORKOUTS
 
 function createWorkoutList(workouts){
 
-return workouts
-.map(item =>
+return workouts.map(item => {
 
-`
+let checked = completedWorkouts.includes(item)
+? "checked"
+: "";
+
+
+return `
+
 <label class="workout-item">
 
-<input type="checkbox">
+<input type="checkbox" ${checked}>
 
 ${item}
 
 </label>
-`
 
-)
-.join("");
+`;
+
+}).join("");
 
 }
 
@@ -157,7 +152,6 @@ createWorkoutList(workoutToday.night);
 
 
 
-// CHECKBOX EFFECT
 
 document.querySelectorAll(".workout-item input").forEach(box => {
 
@@ -165,12 +159,26 @@ document.querySelectorAll(".workout-item input").forEach(box => {
 box.addEventListener("change", function(){
 
 
+let workoutName = this.parentElement.innerText.trim();
+
+
+
 if(this.checked){
+
 
 this.parentElement.style.textDecoration = "line-through";
 
 
+if(!completedWorkouts.includes(workoutName)){
+
+completedWorkouts.push(workoutName);
+
+xp += 25;
+
 }
+
+}
+
 
 else{
 
@@ -178,13 +186,52 @@ else{
 this.parentElement.style.textDecoration = "none";
 
 
+completedWorkouts =
+completedWorkouts.filter(item => item !== workoutName);
+
+
+xp -= 25;
+
+
 }
 
 
+
+localStorage.setItem(
+"completedWorkouts",
+JSON.stringify(completedWorkouts)
+);
+
+
+localStorage.setItem(
+"xp",
+xp
+);
+
+
+updateXP();
+
+
 });
 
 
 });
+
+
+
+
+
+
+function updateXP(){
+
+document.getElementById("xp-display").innerHTML =
+xp + " / 500 XP";
+
+}
+
+
+updateXP();
+
 
 
 
@@ -195,7 +242,7 @@ this.parentElement.style.textDecoration = "none";
 // PAGE NAVIGATION
 
 
-function hideAllPages() {
+function hideAllPages(){
 
 document.getElementById("home-page").classList.add("hidden");
 
@@ -208,7 +255,6 @@ document.getElementById("badges-page").classList.add("hidden");
 document.getElementById("profile-page").classList.add("hidden");
 
 }
-
 
 
 
