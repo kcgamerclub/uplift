@@ -10,6 +10,18 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LEVEL UP</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -25,6 +37,8 @@
 
 
 
+<!-- HOME PAGE -->
+
 <div id="home-page">
 
 
@@ -33,6 +47,7 @@
 
 
 <div class="profile-card">
+
 
 <div class="avatar">
 👤
@@ -46,9 +61,13 @@
 <p>⭐ Level 1</p>
 
 
+
 <div class="xp-text" id="xp-display">
+
 0 / 500 XP
+
 </div>
+
 
 
 <div class="xp-bar">
@@ -100,14 +119,17 @@ Today's Training
 </button>
 
 
+
 <button onclick="openProgress()">
 📈 PROGRESS
 </button>
 
 
+
 <button onclick="openBadges()">
 🏆 BADGES
 </button>
+
 
 
 <button onclick="openProfile()">
@@ -124,20 +146,27 @@ Today's Training
 
 
 
+<!-- TRAINING PAGE -->
+
+
 <div id="training-page" class="hidden">
 
 
 <h1>💪 TRAINING</h1>
 
 
+
 <div class="card">
 
 <h2>Your Workout</h2>
 
-<p>Your workout session will appear here.</p>
+<p>
+Complete your assigned workout and earn XP!
+</p>
 
 
 </div>
+
 
 
 <button onclick="goHome()">
@@ -152,6 +181,8 @@ Today's Training
 
 
 
+
+<!-- PROGRESS PAGE -->
 
 
 <div id="progress-page" class="hidden">
@@ -160,20 +191,33 @@ Today's Training
 <h1>📈 PROGRESS</h1>
 
 
+
 <div class="card">
 
-<h2>Progress</h2>
+
+<h2>Your Progress</h2>
+
 
 <p id="progress-xp">
-XP will appear here.
+
+XP loading...
+
 </p>
+
 
 <p>
 🔥 Streak: 0 Days
 </p>
 
 
+<p>
+🏋️ Workouts Completed: 0
+</p>
+
+
+
 </div>
+
 
 
 <button onclick="goHome()">
@@ -188,6 +232,9 @@ XP will appear here.
 
 
 
+
+
+<!-- BADGES PAGE -->
 
 
 <div id="badges-page" class="hidden">
@@ -196,14 +243,23 @@ XP will appear here.
 <h1>🏆 BADGES</h1>
 
 
+
 <div class="card">
 
-<h2>Achievements</h2>
 
-<p>🔒 No badges unlocked yet</p>
+<h2>Your Badge Collection</h2>
+
+
+<div id="badge-list">
+
+Loading badges...
+
+</div>
 
 
 </div>
+
+
 
 
 <button onclick="goHome()">
@@ -218,6 +274,9 @@ XP will appear here.
 
 
 
+
+
+<!-- PROFILE PAGE -->
 
 
 <div id="profile-page" class="hidden">
@@ -226,16 +285,26 @@ XP will appear here.
 <h1>👤 PROFILE</h1>
 
 
+
 <div class="card">
+
 
 <h2>Katherine</h2>
 
-<p>📣 Position: Backspot</p>
 
-<p>🎯 Goal: Become a stronger athlete</p>
+<p>
+📣 Position: Backspot
+</p>
+
+
+<p>
+🎯 Goal: Become a stronger athlete
+</p>
 
 
 </div>
+
+
 
 
 <button onclick="goHome()">
@@ -249,8 +318,8 @@ XP will appear here.
 
 
 
-</div>
 
+</div>
 
 
 
