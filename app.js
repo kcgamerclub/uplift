@@ -1414,6 +1414,42 @@ stats.innerHTML = `
 
 
 
+  // =====================
+// TEST RESET BUTTON 🛠️
+// =====================
+
+function resetProgress(){
+
+let confirmReset = confirm(
+"Reset all LEVEL UP progress?"
+);
+
+
+if(confirmReset){
+
+localStorage.removeItem("xp");
+
+localStorage.removeItem("level");
+
+localStorage.removeItem("todayCompleted");
+
+localStorage.removeItem("workoutHistory");
+
+localStorage.removeItem("workoutStats");
+
+localStorage.removeItem("unlockedBadges");
+
+
+alert(
+"✨ LEVEL UP reset! Fresh start!"
+);
+
+
+location.reload();
+
+}
+
+}
 }
 
 
