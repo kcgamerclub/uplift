@@ -1,39 +1,76 @@
+// =====================
+// PLAYER SAVE SYSTEM
+// =====================
+
 let xp = Number(localStorage.getItem("xp")) || 0;
 
-let completedWorkouts = JSON.parse(
-    localStorage.getItem("completedWorkouts")
+let level = Number(localStorage.getItem("level")) || 1;
+
+let workoutHistory = JSON.parse(
+    localStorage.getItem("workoutHistory")
 ) || [];
 
+let todayCompleted = JSON.parse(
+    localStorage.getItem("todayCompleted")
+) || [];
+
+let lastWorkoutDate =
+    localStorage.getItem("lastWorkoutDate") || "";
+
+
+
+// =====================
+// DAILY RESET SYSTEM
+// =====================
+
+let todayDate = new Date().toDateString();
+
+
+if(lastWorkoutDate !== todayDate){
+
+    todayCompleted = [];
+
+    localStorage.setItem(
+        "todayCompleted",
+        JSON.stringify(todayCompleted)
+    );
+
+}
+
+
+
+// =====================
+// WORKOUT DATA
+// =====================
 
 
 const today = new Date().getDay();
 
 
-
 const workouts = {
 
-0: {
-day: "Sunday",
-morning: [
+0:{
+day:"Sunday",
+morning:[
 "Lilly Sabri Abs",
 "Deep Core Activation",
 "Jumps & Flexibility"
 ],
-night: [
+night:[
 "Lilly Sabri Glutes",
 "Full Backspot Strength"
 ]
 },
 
 
-1: {
-day: "Monday",
-morning: [
+1:{
+day:"Monday",
+morning:[
 "Lilly Sabri Abs",
 "Deep Core Activation",
 "Jumps & Flexibility"
 ],
-night: [
+night:[
 "Lilly Sabri Glutes",
 "Lower Body Workout",
 "Upper Body Workout"
@@ -41,28 +78,28 @@ night: [
 },
 
 
-2: {
-day: "Tuesday",
-morning: [
+2:{
+day:"Tuesday",
+morning:[
 "Lilly Sabri Abs",
 "Deep Core Activation",
 "Jumps & Flexibility"
 ],
-night: [
+night:[
 "Lilly Sabri Glutes",
 "Full Backspot Strength"
 ]
 },
 
 
-3: {
-day: "Wednesday",
-morning: [
+3:{
+day:"Wednesday",
+morning:[
 "Lilly Sabri Abs",
 "Deep Core Activation",
 "Jumps & Flexibility"
 ],
-night: [
+night:[
 "Lilly Sabri Glutes",
 "Lower Body Workout",
 "Strength Workout"
@@ -70,28 +107,28 @@ night: [
 },
 
 
-4: {
-day: "Thursday",
-morning: [
+4:{
+day:"Thursday",
+morning:[
 "Lilly Sabri Abs",
 "Deep Core Activation",
 "Jumps & Flexibility"
 ],
-night: [
+night:[
 "Lilly Sabri Glutes",
 "Full Backspot Strength"
 ]
 },
 
 
-5: {
-day: "Friday",
-morning: [
+5:{
+day:"Friday",
+morning:[
 "Lilly Sabri Abs",
 "Deep Core Activation",
 "Jumps & Flexibility"
 ],
-night: [
+night:[
 "Lilly Sabri Glutes",
 "Upper Body Workout",
 "Strength Workout"
@@ -112,12 +149,18 @@ document.getElementById("day-title").innerHTML =
 
 
 
+// =====================
+// CREATE WORKOUTS
+// =====================
 
-function createWorkoutList(workouts){
 
-return workouts.map(item => {
+function createWorkoutList(list){
 
-let checked = completedWorkouts.includes(item)
+return list.map(item=>{
+
+
+let checked =
+todayCompleted.includes(item)
 ? "checked"
 : "";
 
@@ -144,38 +187,52 @@ document.getElementById("morning-workout").innerHTML =
 createWorkoutList(workoutToday.morning);
 
 
-
 document.getElementById("night-workout").innerHTML =
 createWorkoutList(workoutToday.night);
 
 
 
 
+// =====================
+// XP + SAVING
+// =====================
 
 
-document.querySelectorAll(".workout-item input").forEach(box => {
+document.querySelectorAll(".workout-item input")
+.forEach(box=>{
 
 
-box.addEventListener("change", function(){
+box.addEventListener("change",function(){
 
 
-let workoutName = this.parentElement.innerText.trim();
+let workout =
+this.parentElement.innerText.trim();
 
 
 
 if(this.checked){
 
 
-this.parentElement.style.textDecoration = "line-through";
+if(!todayCompleted.includes(workout)){
 
 
-if(!completedWorkouts.includes(workoutName)){
+todayCompleted.push(workout);
 
-completedWorkouts.push(workoutName);
 
 xp += 25;
 
+
+workoutHistory.push({
+
+date: todayDate,
+
+workout: workout
+
+});
+
+
 }
+
 
 }
 
@@ -183,11 +240,10 @@ xp += 25;
 else{
 
 
-this.parentElement.style.textDecoration = "none";
-
-
-completedWorkouts =
-completedWorkouts.filter(item => item !== workoutName);
+todayCompleted =
+todayCompleted.filter(
+item=>item !== workout
+);
 
 
 xp -= 25;
@@ -198,8 +254,62 @@ xp -= 25;
 
 
 localStorage.setItem(
-"completedWorkouts",
-JSON.stringify(completedWorkouts)
+"xp",
+xp
+);
+
+
+localStorage.setItem(
+"todayCompleted",
+JSON.stringify(todayCompleted)
+);
+
+
+localStorage.setItem(
+"workoutHistory",
+JSON.stringify(workoutHistory)
+);
+
+
+localStorage.setItem(
+"lastWorkoutDate",
+todayDate
+);
+
+
+updateXP();
+
+
+});
+
+
+});
+
+
+
+
+// =====================
+// LEVEL SYSTEM
+// =====================
+
+
+function updateLevel(){
+
+
+let neededXP = level * 500;
+
+
+if(xp >= neededXP){
+
+
+level++;
+
+xp = 0;
+
+
+localStorage.setItem(
+"level",
+level
 );
 
 
@@ -209,14 +319,15 @@ xp
 );
 
 
-updateXP();
+alert(
+"🎉 LEVEL UP! You reached Level " + level
+);
 
 
-});
+}
 
 
-});
-
+}
 
 
 
@@ -224,10 +335,17 @@ updateXP();
 
 function updateXP(){
 
+
+updateLevel();
+
+
 document.getElementById("xp-display").innerHTML =
-xp + " / 500 XP";
+
+xp + " / " + (level * 500) + " XP";
+
 
 }
+
 
 
 updateXP();
@@ -235,11 +353,9 @@ updateXP();
 
 
 
-
-
-
-
+// =====================
 // PAGE NAVIGATION
+// =====================
 
 
 function hideAllPages(){
@@ -258,55 +374,51 @@ document.getElementById("profile-page").classList.add("hidden");
 
 
 
-
 function startTraining(){
 
 hideAllPages();
 
-document.getElementById("training-page").classList.remove("hidden");
+document.getElementById("training-page")
+.classList.remove("hidden");
 
 }
-
-
 
 
 function openProgress(){
 
 hideAllPages();
 
-document.getElementById("progress-page").classList.remove("hidden");
+document.getElementById("progress-page")
+.classList.remove("hidden");
 
 }
-
-
 
 
 function openBadges(){
 
 hideAllPages();
 
-document.getElementById("badges-page").classList.remove("hidden");
+document.getElementById("badges-page")
+.classList.remove("hidden");
 
 }
-
-
 
 
 function openProfile(){
 
 hideAllPages();
 
-document.getElementById("profile-page").classList.remove("hidden");
+document.getElementById("profile-page")
+.classList.remove("hidden");
 
 }
-
-
 
 
 function goHome(){
 
 hideAllPages();
 
-document.getElementById("home-page").classList.remove("hidden");
+document.getElementById("home-page")
+.classList.remove("hidden");
 
 }
