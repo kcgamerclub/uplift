@@ -24,6 +24,12 @@
 <div class="container">
 
 
+
+<!-- HOME PAGE -->
+
+<div id="home-page">
+
+
 <h1>🩷 LEVEL UP</h1>
 
 
@@ -57,47 +63,201 @@
 
 <div class="card">
 
-
 <h2 id="day-title">
 Today's Training
 </h2>
 
 
-
 <h3>☀️ Morning</h3>
 
-
-<div id="morning-workout">
-
-</div>
+<div id="morning-workout"></div>
 
 
 
 <h3>🌙 Night</h3>
 
-
-<div id="night-workout">
-
-</div>
-
+<div id="night-workout"></div>
 
 
 </div>
 
 
+
+
+
+<button onclick="startTraining()">
+
+▶️ START TRAINING
+
+</button>
+
+
+
+<button onclick="openProgress()">
+
+📈 PROGRESS
+
+</button>
+
+
+
+<button onclick="openBadges()">
+
+🏆 BADGES
+
+</button>
+
+
+
+<button onclick="openProfile()">
+
+👤 PROFILE
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- TRAINING PAGE -->
+
+<div id="training-page" class="hidden">
+
+
+<h1>💪 TRAINING</h1>
 
 
 <div class="card">
 
-<h2>🔥 Daily Habits</h2>
+<h2>Your Workout</h2>
 
-<p>⬜ Drink water</p>
+<p>Your assigned workout will appear here.</p>
 
-<p>⬜ Recovery walk</p>
 
-<p>⬜ Sleep goal</p>
+</div>
 
-<p>⬜ Nutrition habits</p>
+
+
+<button onclick="goHome()">
+
+← Back Home
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- PROGRESS PAGE -->
+
+
+<div id="progress-page" class="hidden">
+
+
+<h1>📈 PROGRESS</h1>
+
+
+<div class="card">
+
+<h2>Level 1 Athlete</h2>
+
+<p>⭐ XP: 120 / 500</p>
+
+<p>🔥 Streak: 0 Days</p>
+
+<p>💪 Workouts Completed: 0</p>
+
+
+</div>
+
+
+<button onclick="goHome()">
+
+← Back Home
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- BADGES PAGE -->
+
+
+<div id="badges-page" class="hidden">
+
+
+<h1>🏆 BADGES</h1>
+
+
+<div class="card">
+
+<h2>Unlocked</h2>
+
+<p>🔒 No badges yet</p>
+
+
+</div>
+
+
+<button onclick="goHome()">
+
+← Back Home
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- PROFILE PAGE -->
+
+
+<div id="profile-page" class="hidden">
+
+
+<h1>👤 PROFILE</h1>
+
+
+<div class="card">
+
+<h2>Katherine</h2>
+
+<p>📣 Position: Backspot</p>
+
+<p>🎯 Goal: Become a stronger athlete</p>
+
+
+</div>
+
+
+<button onclick="goHome()">
+
+← Back Home
+
+</button>
+
 
 </div>
 
