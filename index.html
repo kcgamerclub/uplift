@@ -3,16 +3,16 @@
 
 <head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>LEVEL UP</title>
+<title>LEVEL UP</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -23,195 +23,247 @@
 <div class="container">
 
 
-  <!-- HOME SCREEN -->
+<!-- HOME SCREEN -->
 
-  <div id="home-page">
+<div id="home-page">
 
-    <h1>🩷 LEVEL UP</h1>
 
+<h1>🩷 LEVEL UP</h1>
 
-    <div class="profile-card">
 
-      <div class="avatar">
-        👤
-      </div>
+<div class="profile-card">
 
-      <h2>Katherine</h2>
+<div class="avatar">
+👤
+</div>
 
-      <p>Level 1 Athlete</p>
+<h2>Katherine</h2>
 
+<p>📣 Backspot Athlete</p>
 
-      <div class="xp-text">
-        ⭐ 120 / 500 XP
-      </div>
+<p>⭐ Level 1</p>
 
+<div class="xp-text">
+120 / 500 XP
+</div>
 
-      <div class="xp-bar">
-        <div class="xp-fill"></div>
-      </div>
 
-    </div>
+<div class="xp-bar">
+<div class="xp-fill"></div>
+</div>
 
 
+</div>
 
-    <div class="stats">
 
-      <div class="stat-card">
-        🔥
-        <h3>Streak</h3>
-        <p>0 Days</p>
-      </div>
 
+<div class="stats">
 
-      <div class="stat-card">
-        🏆
-        <h3>Badges</h3>
-        <p>0 / 99</p>
-      </div>
 
-    </div>
+<div class="stat-card">
 
+🔥
 
+<h3>Streak</h3>
 
-    <div class="card">
+<p>0 Days</p>
 
-      <h2>Today's Goals</h2>
+</div>
 
-      <p>☐ Complete workout</p>
-      <p>☐ Stretch</p>
-      <p>☐ Practice skills</p>
-      <p>☐ Recovery</p>
 
-    </div>
 
+<div class="stat-card">
 
+🏆
 
-    <button onclick="openTraining()">
-      Start Training 💪
-    </button>
+<h3>Badges</h3>
 
+<p>0</p>
 
-  </div>
+</div>
 
 
+</div>
 
 
 
 
 
-  <!-- TRAINING SCREEN -->
+<div class="card">
 
 
-  <div id="training-page" class="hidden">
+<h2>Today's Mission</h2>
 
 
-    <h1>💪 TRAINING</h1>
+<h3>☀️ Morning</h3>
 
 
+<label>
+<input type="checkbox">
+Lilly Sabri Abs
+</label>
 
-    <div class="card workout-button" onclick="openStrength()">
 
-      <h2>📣 Cheer Strength</h2>
+<br>
 
-      <p>Build stunt power and backspot strength.</p>
 
-    </div>
+<label>
+<input type="checkbox">
+Deep Core Activation
+</label>
 
 
+<br>
 
 
-    <div class="card workout-button">
+<label>
+<input type="checkbox">
+Jumps & Flexibility
+</label>
 
-      <h2>🤸 Jumps & Flexibility</h2>
 
-      <p>Improve toe touches, hurdlers, and mobility.</p>
 
-    </div>
 
+<h3>🌙 Night</h3>
 
 
+<label>
+<input type="checkbox">
+Lilly Sabri Glutes
+</label>
 
-    <div class="card workout-button">
 
-      <h2>🔥 Core</h2>
+<br>
 
-      <p>Build abs and body control.</p>
 
-    </div>
+<label>
+<input type="checkbox">
+Backspot Strength
+</label>
 
 
+</div>
 
 
-    <div class="card workout-button">
 
-      <h2>⚡ Conditioning</h2>
 
-      <p>Increase endurance and stamina.</p>
 
-    </div>
+<button onclick="openSchedule()">
 
+📅 Weekly Schedule
 
+</button>
 
-    <button onclick="goHome()">
 
-      ← Back Home
 
-    </button>
+</div>
 
 
-  </div>
 
 
 
 
 
+<!-- WEEKLY SCHEDULE SCREEN -->
 
 
-  <!-- CHEER STRENGTH SCREEN -->
+<div id="schedule-page" class="hidden">
 
 
-  <div id="strength-page" class="hidden">
+<h1>📅 WEEKLY PLAN</h1>
 
 
-    <h1>📣 CHEER STRENGTH</h1>
 
+<div class="card">
 
+<h2>Sunday</h2>
 
-    <div class="card">
+<p>☀️ Lilly Sabri Abs</p>
 
+<p>☀️ Deep Core Activation</p>
 
-      <h2>Backspot Strength Workout</h2>
+<p>☀️ Jumps & Flexibility</p>
 
+<p>🌙 Lilly Sabri Glutes</p>
 
-      <p>12 Superman Pulls</p>
+<p>🌙 Full Backspot Strength</p>
 
-      <p>12 Reverse Snow Angels</p>
+</div>
 
-      <p>12 Prone W Pulls</p>
 
-      <p>12 Scapular Push-Ups</p>
 
-      <p>12 Wall Angels</p>
+<div class="card">
 
-      <p>16 Bird Dogs</p>
+<h2>Monday</h2>
 
-      <p>45s Superman Hold</p>
+<p>☀️ Abs + Core + Jumps</p>
 
-      <p>45s Hollow Hold</p>
+<p>🌙 Glutes + Lower Body + Upper Body</p>
 
+</div>
 
-    </div>
 
 
 
-    <button onclick="goTraining()">
+<div class="card">
 
-      ← Back Training
+<h2>Tuesday</h2>
 
-    </button>
+<p>☀️ Abs + Core + Jumps</p>
 
+<p>🌙 Glutes + Full Backspot Strength</p>
 
-  </div>
+</div>
+
+
+
+
+<div class="card">
+
+<h2>Wednesday</h2>
+
+<p>☀️ Abs + Core + Jumps</p>
+
+<p>🌙 Glutes + Lower Body + Strength</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>Thursday</h2>
+
+<p>☀️ Abs + Core + Jumps</p>
+
+<p>🌙 Glutes + Full Backspot Strength</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>Friday</h2>
+
+<p>☀️ Abs + Core + Jumps</p>
+
+<p>🌙 Glutes + Upper Body + Strength</p>
+
+</div>
+
+
+
+<button onclick="goHome()">
+
+← Back Home
+
+</button>
+
+
+</div>
 
 
 
@@ -223,5 +275,6 @@
 
 
 </body>
+
 
 </html>
