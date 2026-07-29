@@ -131,3 +131,75 @@ document.getElementById("night-workout").innerHTML =
 workoutToday.night
 .map(item => "⬜ " + item)
 .join("<br><br>");
+
+
+
+
+
+// PAGE NAVIGATION
+
+
+function hideAllPages() {
+
+    document.getElementById("home-page").classList.add("hidden");
+    document.getElementById("training-page").classList.add("hidden");
+    document.getElementById("progress-page").classList.add("hidden");
+    document.getElementById("badges-page").classList.add("hidden");
+    document.getElementById("profile-page").classList.add("hidden");
+
+}
+
+
+
+function startTraining() {
+
+    hideAllPages();
+
+    document.getElementById("training-page").classList.remove("hidden");
+
+}
+
+
+
+function openProgress() {
+
+    hideAllPages();
+
+    document.getElementById("progress-page").classList.remove("hidden");
+
+}
+
+
+
+function openBadges() {
+
+    hideAllPages();
+
+    document.getElementById("badges-page").classList.remove("hidden");
+
+}
+
+
+
+function openProfile() {
+
+    hideAllPages();
+
+    document.getElementById("profile-page").classList.remove("hidden");
+
+}
+
+
+
+function goHome() {
+
+    hideAllPages();
+
+    document.getElementById("home-page").classList.remove("hidden");
+
+}
+
+document.getElementById("night-workout").innerHTML =
+workoutToday.night
+.map(item => "⬜ " + item)
+.join("<br><br>");
