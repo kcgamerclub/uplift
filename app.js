@@ -1,12 +1,13 @@
 // =====================
 // LEVEL UP SAVE SYSTEM 🩷
-// UPDATE 1/3
 // =====================
 
 
 let xp = Number(localStorage.getItem("xp")) || 0;
 
+
 let level = Number(localStorage.getItem("level")) || 1;
+
 
 
 let todayCompleted = JSON.parse(
@@ -14,9 +15,11 @@ localStorage.getItem("todayCompleted")
 ) || [];
 
 
+
 let workoutHistory = JSON.parse(
 localStorage.getItem("workoutHistory")
 ) || [];
+
 
 
 let unlockedBadges = JSON.parse(
@@ -25,14 +28,16 @@ localStorage.getItem("unlockedBadges")
 
 
 
+
 // =====================
-// WORKOUT INTELLIGENCE 🧠
+// WORKOUT STATS 🧠
 // =====================
 
 
 let workoutStats = JSON.parse(
 localStorage.getItem("workoutStats")
 ) || {
+
 
 total:0,
 
@@ -48,28 +53,41 @@ legs:0,
 
 upperBody:0,
 
-strength:0,
+strength:0
 
-streak:0
 
 };
 
 
 
-let todayDate = new Date().toDateString();
+let todayDate =
+new Date().toDateString();
 
 
 
-if(localStorage.getItem("lastWorkoutDate") !== todayDate){
+let lastWorkoutDate =
+localStorage.getItem("lastWorkoutDate") || "";
+
+
+
+
+if(lastWorkoutDate !== todayDate){
+
 
 todayCompleted = [];
+
 
 localStorage.setItem(
 "todayCompleted",
 JSON.stringify(todayCompleted)
 );
 
+
 }
+
+
+
+
 
 
 
@@ -83,6 +101,8 @@ const workoutDatabase = {
 
 "Lilly Sabri Abs":{
 
+name:"Lilly Sabri Abs",
+
 category:"abs"
 
 },
@@ -90,51 +110,72 @@ category:"abs"
 
 "Deep Core Activation":{
 
+name:"Deep Core Activation",
+
 category:"abs"
 
 },
 
 
+
 "Jumps & Flexibility":{
+
+name:"Jumps & Flexibility",
 
 category:"flexibility"
 
 },
 
 
+
 "Lilly Sabri Glutes":{
+
+name:"Lilly Sabri Glutes",
 
 category:"glutes"
 
 },
 
 
+
 "Full Backspot Strength":{
+
+name:"Full Backspot Strength",
 
 category:"backspot"
 
 },
 
 
+
 "Lower Body Workout":{
+
+name:"Lower Body Workout",
 
 category:"legs"
 
 },
 
 
+
 "Upper Body Workout":{
+
+name:"Upper Body Workout",
 
 category:"upperBody"
 
 },
 
 
+
 "Strength Workout":{
+
+name:"Strength Workout",
 
 category:"strength"
 
 }
+
 
 
 };
@@ -143,12 +184,17 @@ category:"strength"
 
 
 
+
+
+
+
 // =====================
-// TRAINING PLAN
+// WEEKLY WORKOUT PLAN 🏋️
 // =====================
 
 
-const today = new Date().getDay();
+const today =
+new Date().getDay();
 
 
 
@@ -156,171 +202,255 @@ const workouts = {
 
 
 0:{
+
+
 day:"Sunday",
 
+
 morning:[
+
 "Lilly Sabri Abs",
+
 "Deep Core Activation",
+
 "Jumps & Flexibility"
+
 ],
 
+
 night:[
+
 "Lilly Sabri Glutes",
+
 "Full Backspot Strength"
+
 ]
 
+
 },
+
 
 
 1:{
+
+
 day:"Monday",
 
+
 morning:[
+
 "Lilly Sabri Abs",
+
 "Deep Core Activation",
+
 "Jumps & Flexibility"
+
 ],
 
+
 night:[
+
 "Lilly Sabri Glutes",
+
 "Lower Body Workout",
+
 "Upper Body Workout"
+
 ]
 
+
 },
+
 
 
 2:{
+
+
 day:"Tuesday",
 
+
 morning:[
+
 "Lilly Sabri Abs",
+
 "Deep Core Activation",
+
 "Jumps & Flexibility"
+
 ],
 
+
 night:[
+
 "Lilly Sabri Glutes",
+
 "Full Backspot Strength"
+
 ]
 
+
 },
+
 
 
 3:{
+
+
 day:"Wednesday",
 
+
 morning:[
+
 "Lilly Sabri Abs",
+
 "Deep Core Activation",
+
 "Jumps & Flexibility"
+
 ],
 
+
 night:[
+
 "Lilly Sabri Glutes",
+
 "Lower Body Workout",
+
 "Strength Workout"
+
 ]
 
+
 },
+
 
 
 4:{
+
+
 day:"Thursday",
 
+
 morning:[
+
 "Lilly Sabri Abs",
+
 "Deep Core Activation",
+
 "Jumps & Flexibility"
+
 ],
 
+
 night:[
+
 "Lilly Sabri Glutes",
+
 "Full Backspot Strength"
+
 ]
 
+
 },
+
 
 
 5:{
+
+
 day:"Friday",
 
+
 morning:[
+
 "Lilly Sabri Abs",
+
 "Deep Core Activation",
+
 "Jumps & Flexibility"
+
 ],
 
+
 night:[
+
 "Lilly Sabri Glutes",
+
 "Upper Body Workout",
+
 "Strength Workout"
+
 ]
 
-},
-
-
-6:{
-day:"Saturday",
-
-morning:[
-"Lilly Sabri Abs",
-"Deep Core Activation",
-"Jumps & Flexibility"
-],
-
-night:[
-"Lilly Sabri Glutes",
-"Full Backspot Strength"
-]
 
 }
+
 
 
 };
 
 
 
-const workoutToday = workouts[today];
+
+
+const workoutToday =
+workouts[today];
 
 
 
 document.getElementById("day-title").innerHTML =
 
-"🩷 " + workoutToday.day + "'s Training";
+"🩷 " 
++
+workoutToday.day
++
+"'s Training";
+
+
 
 
 
 
 
 // =====================
-// CREATE WORKOUT BOXES
+// CREATE WORKOUT LIST
 // =====================
 
 
 function createWorkoutList(list){
 
 
-return list.map(workout=>{
+return list.map(item=>{
 
 
 let checked =
-todayCompleted.includes(workout)
+
+todayCompleted.includes(item)
+
 ?
+
 "checked"
+
 :
+
 "";
+
 
 
 return `
 
+
 <label class="workout-item">
+
 
 <input type="checkbox" ${checked}>
 
-${workout}
+
+${item}
+
 
 </label>
+
 
 `;
 
@@ -334,18 +464,16 @@ ${workout}
 
 
 document.getElementById("morning-workout").innerHTML =
+
 createWorkoutList(workoutToday.morning);
 
 
+
 document.getElementById("night-workout").innerHTML =
+
 createWorkoutList(workoutToday.night);
-
-
-
-
-
 // =====================
-// TRACK CATEGORIES
+// WORKOUT TRACKING 🧠
 // =====================
 
 
@@ -355,13 +483,15 @@ function addWorkoutStat(workout){
 let data = workoutDatabase[workout];
 
 
-if(!data)return;
+if(!data) return;
+
 
 
 workoutStats.total++;
 
 
 workoutStats[data.category]++;
+
 
 
 localStorage.setItem(
@@ -371,7 +501,6 @@ JSON.stringify(workoutStats)
 
 
 }
-
 
 
 
@@ -382,15 +511,24 @@ function removeWorkoutStat(workout){
 let data = workoutDatabase[workout];
 
 
-if(!data)return;
+if(!data) return;
 
 
-if(workoutStats.total > 0)
+
+if(workoutStats.total > 0){
+
 workoutStats.total--;
 
+}
 
-if(workoutStats[data.category] > 0)
+
+
+if(workoutStats[data.category] > 0){
+
 workoutStats[data.category]--;
+
+}
+
 
 
 localStorage.setItem(
@@ -405,13 +543,16 @@ JSON.stringify(workoutStats)
 
 
 
+
+
+
+
 // =====================
-// CHECKBOX SYSTEM
+// CHECKBOX + XP SYSTEM ⭐
 // =====================
 
 
 document.querySelectorAll(".workout-item input")
-
 .forEach(box=>{
 
 
@@ -420,11 +561,14 @@ box.addEventListener("change",function(){
 
 
 let workout =
+
 this.parentElement.innerText.trim();
 
 
 
+
 if(this.checked){
+
 
 
 if(!todayCompleted.includes(workout)){
@@ -434,6 +578,7 @@ todayCompleted.push(workout);
 
 
 xp += 25;
+
 
 
 addWorkoutStat(workout);
@@ -447,7 +592,7 @@ date:todayDate,
 workout:workout,
 
 category:
-workoutDatabase[workout]?.category
+workoutDatabase[workout]?.category || "unknown"
 
 });
 
@@ -455,8 +600,10 @@ workoutDatabase[workout]?.category
 }
 
 
+
 this.parentElement.style.textDecoration =
 "line-through";
+
 
 
 }
@@ -466,31 +613,52 @@ this.parentElement.style.textDecoration =
 else{
 
 
+
 todayCompleted =
+
 todayCompleted.filter(
+
 item=>item !== workout
+
 );
+
 
 
 xp -= 25;
 
 
+
 removeWorkoutStat(workout);
 
 
+
 workoutHistory =
+
 workoutHistory.filter(
-entry=>
-!(entry.date===todayDate &&
-entry.workout===workout)
+
+entry =>
+
+!(
+
+entry.date === todayDate
+
+&&
+
+entry.workout === workout
+
+)
+
 );
+
 
 
 this.parentElement.style.textDecoration =
 "none";
 
 
+
 }
+
 
 
 
@@ -501,16 +669,19 @@ xp
 );
 
 
+
 localStorage.setItem(
 "todayCompleted",
 JSON.stringify(todayCompleted)
 );
 
 
+
 localStorage.setItem(
 "workoutHistory",
 JSON.stringify(workoutHistory)
 );
+
 
 
 localStorage.setItem(
@@ -526,42 +697,47 @@ checkBadges();
 updateXP();
 
 
+
+updateStatsDisplay();
+
+
+
 });
 
 
+
 });
+
+
+
+
+
+
+
+
+
 // =====================
-// XP + LEVEL SYSTEM ⭐
-// UPDATE 2/3
+// LEVEL SYSTEM 🎮
 // =====================
 
 
 function updateLevel(){
 
 
-let neededXP = level * 500;
+
+let neededXP =
+level * 500;
 
 
 
 while(xp >= neededXP){
 
 
+
 xp -= neededXP;
 
 
 level++;
-
-
-alert(
-"🎉 LEVEL UP!\nYou reached Level " + level
-);
-
-
-
-neededXP = level * 500;
-
-
-}
 
 
 
@@ -571,13 +747,40 @@ level
 );
 
 
+
+alert(
+
+"🎉 LEVEL UP!\nYou reached Level "
+
++
+
+level
+
+);
+
+
+
+neededXP =
+level * 500;
+
+
+
+}
+
+
+
+
 localStorage.setItem(
 "xp",
 xp
 );
 
 
+
 }
+
+
+
 
 
 
@@ -590,6 +793,7 @@ updateLevel();
 
 
 let display =
+
 document.getElementById("xp-display");
 
 
@@ -599,15 +803,24 @@ if(display){
 
 display.innerHTML =
 
-xp +
+
+xp
+
++
+
 " / "
+
 +
+
 (level * 500)
+
 +
+
 " XP";
 
 
 }
+
 
 
 }
@@ -621,95 +834,24 @@ updateXP();
 
 
 
+
+
 // =====================
 // BADGE DATABASE 🏆
 // =====================
-
 
 
 const badges = [
 
 
 
-// 🔥 CONSISTENCY
-
-
-{
-id:"first_step",
-name:"First Step",
-icon:"🏆",
-category:"Consistency",
-description:"Complete your first workout",
-type:"total",
-requirement:1
-},
-
-
-{
-id:"seven_fire",
-name:"7 Day Fire",
-icon:"🔥",
-category:"Consistency",
-description:"Complete 7 workouts",
-type:"total",
-requirement:7
-},
-
-
-{
-id:"two_week",
-name:"Two Week Warrior",
-icon:"⚡",
-category:"Consistency",
-description:"Complete 14 workouts",
-type:"total",
-requirement:14
-},
-
-
-{
-id:"month",
-name:"30 Day Queen",
-icon:"👑",
-category:"Consistency",
-description:"Complete 30 workouts",
-type:"total",
-requirement:30
-},
-
-
-{
-id:"legend",
-name:"100 Workout Legend",
-icon:"💎",
-category:"Consistency",
-description:"Complete 100 workouts",
-type:"total",
-requirement:100
-},
-
-
-
-
 // 💪 BACKSPOT
-
-
-{
-id:"backspot_start",
-name:"Backspot Beginner",
-icon:"👐",
-category:"Backspot Power",
-description:"Complete 5 backspot workouts",
-type:"backspot",
-requirement:5
-},
-
 
 {
 id:"backspot_builder",
+category:"💪 Backspot Badges",
 name:"Backspot Builder",
 icon:"💪",
-category:"Backspot Power",
 description:"Complete 10 backspot workouts",
 type:"backspot",
 requirement:10
@@ -717,121 +859,38 @@ requirement:10
 
 
 {
-id:"flyer_helper",
-name:"Flyer Helper",
-icon:"🦾",
-category:"Backspot Power",
+id:"ankle_puller",
+category:"💪 Backspot Badges",
+name:"Ankle Puller",
+icon:"🤝",
 description:"Complete 25 backspot workouts",
 type:"backspot",
 requirement:25
 },
 
 
-{
-id:"ankle_pro",
-name:"Ankle Pull Pro",
-icon:"🏋️",
-category:"Backspot Power",
-description:"Complete 50 backspot workouts",
-type:"backspot",
-requirement:50
-},
-
-
-{
-id:"elite_backspot",
-name:"Elite Backspot",
-icon:"👑",
-category:"Backspot Power",
-description:"Complete 100 backspot workouts",
-type:"backspot",
-requirement:100
-},
-
-
-
 
 // ⚡ CORE
 
-
 {
-id:"core_start",
-name:"Core Starter",
+id:"core_crusher",
+category:"⚡ Core Badges",
+name:"Core Crusher",
 icon:"⚡",
-category:"Core",
-description:"Complete 5 ab workouts",
-type:"abs",
-requirement:5
-},
-
-
-{
-id:"ab_apprentice",
-name:"Ab Apprentice",
-icon:"🔥",
-category:"Core",
 description:"Complete 20 ab workouts",
 type:"abs",
 requirement:20
 },
 
 
+
 {
-id:"core_crusher",
-name:"Core Crusher",
-icon:"💎",
-category:"Core",
+id:"ab_attack",
+category:"⚡ Core Badges",
+name:"Ab Attack",
+icon:"🔥",
 description:"Complete 50 ab workouts",
 type:"abs",
-requirement:50
-},
-
-
-{
-id:"six_pack",
-name:"Six Pack Strength",
-icon:"👑",
-category:"Core",
-description:"Complete 100 ab workouts",
-type:"abs",
-requirement:100
-},
-
-
-
-
-// 🍑 GLUTES
-
-
-{
-id:"glute_start",
-name:"Glute Starter",
-icon:"🍑",
-category:"Lower Body",
-description:"Complete 5 glute workouts",
-type:"glutes",
-requirement:5
-},
-
-
-{
-id:"glute_goddess",
-name:"Glute Goddess",
-icon:"🔥",
-category:"Lower Body",
-description:"Complete 20 glute workouts",
-type:"glutes",
-requirement:20
-},
-
-
-{
-id:"lower_power",
-name:"Lower Body Power",
-icon:"🦵",
-category:"Lower Body",
-description:"Complete 50 glute workouts",
-type:"glutes",
 requirement:50
 },
 
@@ -839,181 +898,72 @@ requirement:50
 
 // 🤸 FLEXIBILITY
 
-
-{
-id:"jump_start",
-name:"Jump Starter",
-icon:"🤸",
-category:"Flexibility",
-description:"Complete 5 flexibility sessions",
-type:"flexibility",
-requirement:5
-},
-
-
 {
 id:"jump_master",
+category:"🤸 Jump & Flexibility",
 name:"Jump Master",
-icon:"⭐",
-category:"Flexibility",
+icon:"🤸",
 description:"Complete 25 flexibility sessions",
 type:"flexibility",
 requirement:25
 },
 
 
+
 {
-id:"flex_queen",
-name:"Flexibility Queen",
-icon:"🎀",
-category:"Flexibility",
+id:"toe_touch",
+category:"🤸 Jump & Flexibility",
+name:"Toe Touch Pro",
+icon:"⭐",
 description:"Complete 50 flexibility sessions",
 type:"flexibility",
 requirement:50
 },
 
 
-];
-// =====================
-// MORE BADGES 🏆
-// UPDATE 3/3
-// =====================
 
-
-// 🏋️ STRENGTH
-
-
-badges.push(
+// 🍑 GLUTES
 
 {
-id:"strength_start",
-name:"Strength Starter",
-icon:"🏋️",
-category:"Strength",
-description:"Complete 5 strength workouts",
-type:"strength",
-requirement:5
-},
-
-
-{
-id:"power_player",
-name:"Power Player",
-icon:"💪",
-category:"Strength",
-description:"Complete 25 strength workouts",
-type:"strength",
-requirement:25
-},
-
-
-{
-id:"athlete_mode",
-name:"Athlete Mode",
-icon:"🔥",
-category:"Strength",
-description:"Complete 50 strength workouts",
-type:"strength",
-requirement:50
+id:"glute_goddess",
+category:"🍑 Glute & Leg Badges",
+name:"Glute Goddess",
+icon:"🍑",
+description:"Complete 20 glute workouts",
+type:"glutes",
+requirement:20
 },
 
 
 
-// 🦵 LEGS
-
-
-{
-id:"leg_power",
-name:"Leg Power",
-icon:"🦵",
-category:"Legs",
-description:"Complete 25 leg workouts",
-type:"legs",
-requirement:25
-},
-
+// 🔥 TOTAL
 
 {
-id:"explosive",
-name:"Explosive Athlete",
-icon:"⚡",
-category:"Legs",
-description:"Complete 50 leg workouts",
-type:"legs",
-requirement:50
-},
-
-
-
-// 🎀 CHEER JOURNEY
-
-
-{
-id:"first_stunt",
-name:"First Stunt",
-icon:"🎀",
-category:"Cheer",
-description:"Complete your first cheer strength session",
-type:"backspot",
+id:"first_step",
+category:"🔥 Consistency Badges",
+name:"First Step",
+icon:"🏆",
+description:"Complete your first workout",
+type:"total",
 requirement:1
 },
 
 
-{
-id:"team_player",
-name:"Team Player",
-icon:"📣",
-category:"Cheer",
-description:"Complete 25 total workouts",
-type:"total",
-requirement:25
-},
-
 
 {
-id:"competition_ready",
-name:"Competition Ready",
-icon:"🏆",
-category:"Cheer",
-description:"Complete 75 workouts",
+id:"consistency_queen",
+category:"🔥 Consistency Badges",
+name:"Consistency Queen",
+icon:"🔥",
+description:"Complete 7 workouts",
 type:"total",
-requirement:75
-},
-
-
-
-// 💎 SPECIAL
-
-
-{
-id:"dedication",
-name:"Diamond Dedication",
-icon:"💎",
-category:"Special",
-description:"Complete 150 workouts",
-type:"total",
-requirement:150
-},
-
-
-{
-id:"level_up_legend",
-name:"LEVEL UP Legend",
-icon:"👑",
-category:"Special",
-description:"Complete 250 workouts",
-type:"total",
-requirement:250
+requirement:7
 }
 
 
-);
-
-
-
-
+];
 // =====================
-// BADGE CHECKER 🏆
+// BADGE UNLOCK SYSTEM 🏆
 // =====================
 
 
@@ -1023,38 +973,32 @@ function checkBadges(){
 badges.forEach(badge=>{
 
 
-let progress =
-workoutStats[badge.type] || 0;
+let amount =
+workoutStats[badge.type];
 
 
 
-if(
-progress >= badge.requirement &&
-!unlockedBadges.includes(badge.id)
-
-){
+if(amount >= badge.requirement){
 
 
-unlockedBadges.push(badge.id);
+
+if(!unlockedBadges.includes(badge.id)){
+
+
+unlockedBadges.push(
+badge.id
+);
 
 
 
 alert(
-
-"🏆 BADGE UNLOCKED!\n\n"
-
+"🏆 BADGE UNLOCKED!\n"
 +
-
 badge.icon
-
 +
-
 " "
-
 +
-
 badge.name
-
 );
 
 
@@ -1062,16 +1006,18 @@ badge.name
 }
 
 
+
+}
+
+
+
 });
 
 
 
 localStorage.setItem(
-
 "unlockedBadges",
-
 JSON.stringify(unlockedBadges)
-
 );
 
 
@@ -1087,24 +1033,28 @@ displayBadges();
 
 
 
+
+
 // =====================
-// BADGE GALLERY DISPLAY
+// BADGE GALLERY 🏆
 // =====================
 
 
 function displayBadges(){
 
 
-let area =
-document.getElementById("badge-list");
+let gallery =
+document.getElementById(
+"badge-gallery"
+);
 
 
 
-if(!area)return;
+if(!gallery) return;
 
 
 
-area.innerHTML = "";
+let html = "";
 
 
 
@@ -1117,7 +1067,8 @@ badges.forEach(badge=>{
 
 if(!categories[badge.category]){
 
-categories[badge.category]=[];
+
+categories[badge.category] = [];
 
 }
 
@@ -1125,7 +1076,11 @@ categories[badge.category]=[];
 categories[badge.category].push(badge);
 
 
+
 });
+
+
+
 
 
 
@@ -1133,15 +1088,17 @@ categories[badge.category].push(badge);
 Object.keys(categories).forEach(category=>{
 
 
-area.innerHTML +=
+html +=
 
 `
 
-<h2 class="badge-category">
+<h3>
 
 ${category}
 
-</h2>
+</h3>
+
+<div class="badge-section">
 
 `;
 
@@ -1151,38 +1108,41 @@ categories[category].forEach(badge=>{
 
 
 let unlocked =
-unlockedBadges.includes(badge.id);
+
+unlockedBadges.includes(
+badge.id
+);
 
 
 
-area.innerHTML +=
+html +=
 
 
 `
 
 <div class="badge-card ${
-unlocked
-?
-"unlocked"
-:
-"locked"
+unlocked ? "unlocked" : "locked"
 }">
 
 
 <div class="badge-icon">
 
-${badge.icon}
+${
+unlocked
+?
+badge.icon
+:
+"🔒"
+}
 
 </div>
 
 
-
-<h3>
+<h4>
 
 ${badge.name}
 
-</h3>
-
+</h4>
 
 
 <p>
@@ -1192,21 +1152,20 @@ ${badge.description}
 </p>
 
 
-
-<p>
-
-${
-unlocked
-?
-"✨ UNLOCKED"
-:
-"🔒 LOCKED"
-
-}
-
-</p>
+</div>
 
 
+`;
+
+
+
+});
+
+
+
+html +=
+
+`
 
 </div>
 
@@ -1217,11 +1176,13 @@ unlocked
 });
 
 
-});
+
+gallery.innerHTML = html;
 
 
 
 }
+
 
 
 
@@ -1235,223 +1196,272 @@ displayBadges();
 
 
 
-// =====================
-// PAGE NAVIGATION
-// =====================
-
-
-function hideAllPages(){
-
-
-let pages=[
-
-"home-page",
-
-"training-page",
-
-"progress-page",
-
-"badges-page",
-
-"profile-page"
-
-];
-
-
-
-pages.forEach(page=>{
-
-
-let element =
-document.getElementById(page);
-
-
-
-if(element){
-
-element.classList.add("hidden");
-
-}
-
-
-});
-
-
-}
-
-
-
-
-
-function startTraining(){
-
-
-hideAllPages();
-
-
-document
-.getElementById("training-page")
-.classList.remove("hidden");
-
-
-}
-
-
-
-
-
-function openProgress(){
-
-
-hideAllPages();
-
-
-document
-.getElementById("progress-page")
-.classList.remove("hidden");
-
-
-}
-
-
-
-
-
-function openBadges(){
-
-
-hideAllPages();
-
-
-document
-.getElementById("badges-page")
-.classList.remove("hidden");
-
-
-displayBadges();
-
-
-}
-
-
-
-
-
-function openProfile(){
-
-
-hideAllPages();
-
-
-document
-.getElementById("profile-page")
-.classList.remove("hidden");
-
-
-}
-
-
-
-
-
-function goHome(){
-
-
-hideAllPages();
-
-
-document
-.getElementById("home-page")
-.classList.remove("hidden");
-
-
-}
-
-
-
-
 
 
 // =====================
-// PROFILE STATS
+// STATS DISPLAY 📊
 // =====================
 
 
 function updateStatsDisplay(){
 
 
-let stats =
-document.getElementById("stats-display");
-
-
-
-if(!stats)return;
-
-
-
-stats.innerHTML = `
-
-
-<h3>📊 Your Stats</h3>
-
-
-<p>Total Workouts: ${workoutStats.total}</p>
-
-<p>🔥 Abs: ${workoutStats.abs}</p>
-
-<p>💪 Backspot: ${workoutStats.backspot}</p>
-
-<p>🤸 Flexibility: ${workoutStats.flexibility}</p>
-
-<p>🍑 Glutes: ${workoutStats.glutes}</p>
-
-<p>🦵 Legs: ${workoutStats.legs}</p>
-
-<p>🏋️ Strength: ${workoutStats.strength}</p>
-
-
-`;
-
-
-
-  // =====================
-// TEST RESET BUTTON 🛠️
-// =====================
-
-function resetProgress(){
-
-let confirmReset = confirm(
-"Reset all LEVEL UP progress?"
+let total =
+document.getElementById(
+"total-workouts"
 );
 
 
-if(confirmReset){
 
-localStorage.removeItem("xp");
-
-localStorage.removeItem("level");
-
-localStorage.removeItem("todayCompleted");
-
-localStorage.removeItem("workoutHistory");
-
-localStorage.removeItem("workoutStats");
-
-localStorage.removeItem("unlockedBadges");
-
-
-alert(
-"✨ LEVEL UP reset! Fresh start!"
+let backspot =
+document.getElementById(
+"backspot-count"
 );
 
 
-location.reload();
+
+let abs =
+document.getElementById(
+"abs-count"
+);
+
+
+
+let glutes =
+document.getElementById(
+"glutes-count"
+);
+
+
+
+let flex =
+document.getElementById(
+"flex-count"
+);
+
+
+
+
+if(total){
+
+total.innerHTML =
+workoutStats.total;
 
 }
 
+
+
+if(backspot){
+
+backspot.innerHTML =
+workoutStats.backspot;
+
 }
+
+
+
+if(abs){
+
+abs.innerHTML =
+workoutStats.abs;
+
 }
+
+
+
+if(glutes){
+
+glutes.innerHTML =
+workoutStats.glutes;
+
+}
+
+
+
+if(flex){
+
+flex.innerHTML =
+workoutStats.flexibility;
+
+}
+
+
+
+}
+
 
 
 
 updateStatsDisplay();
+
+
+
+
+
+
+
+
+// =====================
+// PROFILE LEVEL DISPLAY ⭐
+// =====================
+
+
+function updateProfile(){
+
+
+
+let levelDisplay =
+
+document.getElementById(
+"level-display"
+);
+
+
+
+if(levelDisplay){
+
+
+levelDisplay.innerHTML =
+
+"⭐ Level "
+
++
+
+level;
+
+
+
+}
+
+
+
+
+let badgeCount =
+
+document.getElementById(
+"badge-count"
+);
+
+
+
+if(badgeCount){
+
+
+badgeCount.innerHTML =
+
+unlockedBadges.length
+
++
+
+" / "
+
++
+
+badges.length
+
++
+
+" Badges";
+
+
+
+}
+
+
+
+}
+
+
+
+updateProfile();
+
+
+
+
+
+
+
+
+
+// =====================
+// NAVIGATION 🧭
+// =====================
+
+
+function showPage(page){
+
+
+document
+.querySelectorAll(".page")
+.forEach(section=>{
+
+
+section.style.display =
+"none";
+
+
+});
+
+
+
+let selected =
+
+document.getElementById(page);
+
+
+
+if(selected){
+
+
+selected.style.display =
+"block";
+
+
+}
+
+
+
+}
+
+
+
+
+document
+.querySelectorAll("[data-page]")
+.forEach(button=>{
+
+
+button.addEventListener(
+"click",
+()=>{
+
+
+showPage(
+button.dataset.page
+);
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
+// =====================
+// APP STARTUP 🩷
+// =====================
+
+
+showPage("home");
+
+
+console.log(
+"🔥 Level Up App Loaded Successfully!"
+);
