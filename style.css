@@ -440,3 +440,91 @@ BADGE GALLERY 🏆
     padding-bottom: 25px;
 
 }
+/* =====================
+BADGE GALLERY 🏆
+===================== */
+
+#badge-list {
+
+display:grid;
+grid-template-columns:repeat(3, 1fr);
+gap:15px;
+margin-top:20px;
+
+}
+
+
+.badge-card {
+
+background:#ffeaf5;
+border-radius:20px;
+padding:15px 8px;
+text-align:center;
+min-height:150px;
+
+box-shadow:0 5px 12px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+
+.badge-card:hover {
+
+transform:scale(1.05);
+
+}
+
+
+
+.badge-icon {
+
+font-size:45px;
+margin-bottom:10px;
+
+}
+
+
+
+.badge-card h3 {
+
+font-size:14px;
+color:#ff4fa3;
+margin:5px 0;
+
+}
+
+
+
+.badge-card p {
+
+font-size:11px;
+color:#777;
+
+}
+
+
+
+.badge-card.locked {
+
+filter:grayscale(1);
+opacity:.55;
+
+}
+
+
+
+.badge-card.unlocked {
+
+background:#fff0fa;
+
+border:3px solid #ff4fa3;
+
+}
+
+
+.badge-card.unlocked .badge-icon {
+
+filter:none;
+
+}
