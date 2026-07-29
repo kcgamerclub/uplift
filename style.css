@@ -1,144 +1,442 @@
 body {
+
     margin: 0;
+
     padding: 30px 20px;
+
     background: #ffeaf5;
+
     font-family: 'Poppins', sans-serif;
+
     display: flex;
+
     justify-content: center;
+
 }
+
 
 
 .container {
+
     width: 360px;
+
 }
+
 
 
 /* HIDE SCREENS */
 
 .hidden {
+
     display: none;
+
 }
+
 
 
 /* HEADER */
 
 h1 {
+
     background: linear-gradient(135deg, #ff4fa3, #ff87c5);
+
     color: white;
+
     text-align: center;
+
     padding: 20px;
+
     border-radius: 25px;
+
     font-size: 38px;
+
     box-shadow: 0 8px 20px rgba(0,0,0,.15);
+
 }
+
 
 
 /* PROFILE CARD */
 
 .profile-card {
+
     background: white;
+
     border-radius: 25px;
+
     padding: 25px;
+
     text-align: center;
+
     margin-top: 20px;
+
     box-shadow: 0 8px 18px rgba(0,0,0,.08);
+
 }
+
 
 
 .avatar {
+
     font-size: 55px;
+
 }
+
 
 
 .profile-card h2 {
+
     margin-bottom: 5px;
+
     color: #ff4fa3;
+
 }
+
 
 
 .profile-card p {
+
     margin-top: 0;
+
     color: #777;
+
 }
+
+
+
 
 
 /* XP */
 
 .xp-text {
+
     font-weight: 600;
+
     margin-top: 20px;
+
 }
+
 
 
 .xp-bar {
+
     height: 18px;
+
     background: #ffd1e8;
+
     border-radius: 20px;
+
     overflow: hidden;
+
     margin-top: 10px;
+
 }
+
 
 
 .xp-fill {
+
     height: 100%;
+
     width: 25%;
+
     background: linear-gradient(90deg, #ff4fa3, #ff87c5);
+
     border-radius: 20px;
+
 }
+
+
+
 
 
 /* STATS */
 
 .stats {
+
     display: flex;
+
     gap: 15px;
+
     margin-top: 20px;
+
 }
+
 
 
 .stat-card {
+
     background: white;
+
     flex: 1;
+
     text-align: center;
+
     padding: 15px;
+
     border-radius: 20px;
+
     box-shadow: 0 8px 18px rgba(0,0,0,.08);
+
 }
+
 
 
 .stat-card h3 {
+
     margin: 5px;
+
     color: #ff4fa3;
+
 }
+
+
+
 
 
 /* GENERAL CARDS */
 
 .card {
+
     background: white;
+
     border-radius: 25px;
+
     padding: 20px;
+
     margin-top: 20px;
+
     box-shadow: 0 8px 18px rgba(0,0,0,.08);
+
 }
+
 
 
 .card h2 {
+
     color: #ff4fa3;
+
 }
+
+
+
 
 
 /* BUTTON */
 
 button {
+
     width: 100%;
+
     margin-top: 20px;
+
     padding: 18px;
+
     border: none;
+
     border-radius: 20px;
+
     background: #ff4fa3;
+
     color: white;
+
     font-size: 20px;
+
     font-weight: 700;
+
     cursor: pointer;
+
+}
+
+
+
+
+
+/* =====================
+BADGE GALLERY 🏆
+===================== */
+
+
+#badge-list {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 20px;
+
+    max-height: 600px;
+
+    overflow-y: auto;
+
+    padding: 5px;
+
+}
+
+
+
+
+
+/* BADGE CARD */
+
+.badge-card {
+
+    background: #fff5fb;
+
+    border-radius: 20px;
+
+    padding: 12px 8px;
+
+    text-align: center;
+
+    min-height: 150px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    transition: .3s;
+
+    border: 3px solid #ffd1e8;
+
+}
+
+
+
+
+
+/* BADGE ICON */
+
+.badge-icon {
+
+    font-size: 45px;
+
+    margin-bottom: 8px;
+
+}
+
+
+
+
+
+/* BADGE NAME */
+
+.badge-card h3 {
+
+    font-size: 13px;
+
+    color: #ff4fa3;
+
+    margin: 5px 0;
+
+}
+
+
+
+
+
+/* BADGE DESCRIPTION */
+
+.badge-card p {
+
+    font-size: 10px;
+
+    color: #777;
+
+    margin: 4px;
+
+}
+
+
+
+
+
+/* LOCKED BADGES 🔒 */
+
+.badge-card.locked {
+
+    filter: grayscale(1);
+
+    opacity: .55;
+
+    background: #eeeeee;
+
+}
+
+
+
+
+
+/* UNLOCKED BADGES ✨ */
+
+.badge-card.unlocked {
+
+    background: linear-gradient(
+
+        135deg,
+
+        #fff0fa,
+
+        #ffd6ed
+
+    );
+
+    border-color: #ff4fa3;
+
+    box-shadow:
+
+    0 0 15px rgba(255,79,163,.35);
+
+    animation: badgeGlow 2s infinite;
+
+}
+
+
+
+
+
+/* BADGE ANIMATION */
+
+@keyframes badgeGlow {
+
+
+    0% {
+
+        transform: scale(1);
+
+    }
+
+
+    50% {
+
+        transform: scale(1.05);
+
+    }
+
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+
+}
+
+
+
+
+
+/* BADGE PAGE */
+
+#badges-page .card {
+
+    padding-bottom: 25px;
+
 }
