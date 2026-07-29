@@ -25,12 +25,11 @@
 
 
 
-<!-- HOME PAGE -->
-
 <div id="home-page">
 
 
 <h1>🩷 LEVEL UP</h1>
+
 
 
 <div class="profile-card">
@@ -39,6 +38,7 @@
 👤
 </div>
 
+
 <h2>Katherine</h2>
 
 <p>📣 Backspot Athlete</p>
@@ -46,26 +46,32 @@
 <p>⭐ Level 1</p>
 
 
-<div class="xp-text">
-120 / 500 XP
+<div class="xp-text" id="xp-display">
+0 / 500 XP
 </div>
 
 
 <div class="xp-bar">
+
 <div class="xp-fill"></div>
+
 </div>
 
 
 </div>
+
+
 
 
 
 
 <div class="card">
 
+
 <h2 id="day-title">
 Today's Training
 </h2>
+
 
 
 <h3>☀️ Morning</h3>
@@ -74,45 +80,38 @@ Today's Training
 
 
 
+
 <h3>🌙 Night</h3>
 
 <div id="night-workout"></div>
 
 
+
 </div>
+
+
 
 
 
 
 
 <button onclick="startTraining()">
-
 ▶️ START TRAINING
-
 </button>
-
 
 
 <button onclick="openProgress()">
-
 📈 PROGRESS
-
 </button>
-
 
 
 <button onclick="openBadges()">
-
 🏆 BADGES
-
 </button>
 
 
-
 <button onclick="openProfile()">
-
 👤 PROFILE
-
 </button>
 
 
@@ -124,8 +123,6 @@ Today's Training
 
 
 
-
-<!-- TRAINING PAGE -->
 
 <div id="training-page" class="hidden">
 
@@ -137,17 +134,14 @@ Today's Training
 
 <h2>Your Workout</h2>
 
-<p>Your assigned workout will appear here.</p>
+<p>Your workout session will appear here.</p>
 
 
 </div>
 
 
-
 <button onclick="goHome()">
-
 ← Back Home
-
 </button>
 
 
@@ -158,8 +152,6 @@ Today's Training
 
 
 
-
-<!-- PROGRESS PAGE -->
 
 
 <div id="progress-page" class="hidden">
@@ -170,22 +162,22 @@ Today's Training
 
 <div class="card">
 
-<h2>Level 1 Athlete</h2>
+<h2>Progress</h2>
 
-<p>⭐ XP: 120 / 500</p>
+<p id="progress-xp">
+XP will appear here.
+</p>
 
-<p>🔥 Streak: 0 Days</p>
-
-<p>💪 Workouts Completed: 0</p>
+<p>
+🔥 Streak: 0 Days
+</p>
 
 
 </div>
 
 
 <button onclick="goHome()">
-
 ← Back Home
-
 </button>
 
 
@@ -196,8 +188,6 @@ Today's Training
 
 
 
-
-<!-- BADGES PAGE -->
 
 
 <div id="badges-page" class="hidden">
@@ -208,18 +198,16 @@ Today's Training
 
 <div class="card">
 
-<h2>Unlocked</h2>
+<h2>Achievements</h2>
 
-<p>🔒 No badges yet</p>
+<p>🔒 No badges unlocked yet</p>
 
 
 </div>
 
 
 <button onclick="goHome()">
-
 ← Back Home
-
 </button>
 
 
@@ -230,8 +218,6 @@ Today's Training
 
 
 
-
-<!-- PROFILE PAGE -->
 
 
 <div id="profile-page" class="hidden">
@@ -253,9 +239,7 @@ Today's Training
 
 
 <button onclick="goHome()">
-
 ← Back Home
-
 </button>
 
 
@@ -263,7 +247,10 @@ Today's Training
 
 
 
+
+
 </div>
+
 
 
 
